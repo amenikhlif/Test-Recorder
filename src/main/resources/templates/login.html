@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+  <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+  <!-- Font Awesome -->
+
+
+
+
+
+</head>
+<body>
+    <div class="container">
+        <div class="content first-content">
+            <div class="first-column"> 
+                <h2 class="title title-primary">welcome back!</h2>
+                <p class="description description-primary">To keep connected with us</p>
+                <p class="description description-primary">please login with your personal info</p>
+               
+              
+                <button id="signin" class="btn btn-primary" th:href="@{/registration2}"><a href="/" th:href="@{/registration2}" style="color:#fff"> sign in</a></button>
+            </div>   
+            <div class="second-column">
+            
+          <div class="image">
+              <img  src="data:image/png;base64,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"  width="200" height="100">
+              </div> 
+          
+              
+               <!--  <form class="form" th:action="@{/login}" method="post"> -->
+                <form class="form" th:action="@{/login}" method="post">
+                    
+                    <div th:if="${param.error}">
+						<div class="alert alert-danger">Invalid username or
+							password.</div>
+					</div>
+					<div th:if="${param.logout}">
+						<div class="alert alert-info">You have been logged out.</div>
+					</div>
+                    
+                    
+             
+                    
+                    
+                    
+                    <label class="label-input" for="username">
+                        <i class="far fa-envelope icon-modify"></i>
+                        <input type="text" id="username" name="username" class="form-control"
+							autofocus="autofocus" placeholder="Email">
+                    </label>
+                    
+                    
+ 
+                    <label class="label-input" for="password">
+                        <i class="fas fa-lock icon-modify"></i>
+                        <input type="password" placeholder="Password" name="password" class="form-control">
+                    </label>
+                    
+                  <!--  <input type="submit" name="login-submit" id="login-submit"
+									class="form-control btn btn-primary" value="Log In" /> --> 
+                    <button type="submit" name="login-submit" id="login-submit" class="btn btn-second">sign up</button>        
+                </form>
+            </div><!-- second column -->
+        </div><!-- first content -->
+        
+  
+    
+        </div> 
+  
+    
+    
+    
+
+</body>
+</html>

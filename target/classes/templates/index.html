@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Users</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+
+
+<body  style="background-color:#f3f1ef">
+	
+	 <nav class="main-header navbar navbar-expand navbar-white navbar-light" >
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="/index"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a th:href="@{/}" class="nav-link">Home</a>
+      </li>
+
+    </ul>
+
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+   
+ 
+      <li class="nav-item">
+      <a data-toggle="tooltip" data-placement="top" title="Logout" th:href="@{/logout}">
+          <i class="fas fa-th-large"></i>
+          
+        </a>
+      </li>
+    </ul>
+  </nav>
+		
+		
+		 <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4"  style="background-color:#67809f">
+    <!-- Brand Logo -->
+    <a th:href="@{/}" class="brand-link">
+    <img  src="../../dist/img/talan.png"   class="brand-image img-circle elevation-3" >
+     
+      <span class="brand-text font-weight-light">Talan</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+         <img src="../../dist/img/TTT.png"
+           alt="AdminLTE Logo"
+           class="brand-image img-circle elevation-3"
+           >
+        </div>
+        <div class="info">
+          <a th:href="@{/}" class="brand-text font-weight-light">Test Recorder</a>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+ 
+          <li class="nav-item has-treeview">
+          <a href="/registration" th :href="@{/registration}" class="nav-link">
+          <i
+							class="fa fa-edit"></i>
+              <p>
+               Registration
+                </p></i> </a>
+			</li>
+          <li class="nav-item">
+            <a href="/registration/user_lists" th
+						:href="@{/registration/user_lists}" class="nav-link">
+              <i class="fas fa-clipboard-check"></i>
+              <p>
+                User Management
+                
+              </p>
+            </a>
+          </li>
+          
+
+          
+          <li class="nav-item has-treeview">
+            <a  href="/testSuite_lists" th :href="@{/testSuite_lists}" class="nav-link">
+             <i class="fa fa-table">
+              <p>
+                Test Suite
+                </p>
+                </i>
+            </a>
+           
+          </li>
+          
+                    <li class="nav-item has-treeview">
+            <a  href="/dependentTestCase_lists" th :href="@{/dependentTestCase_lists}" class="nav-link">
+             <i class="fas fa-tasks">
+              <p>
+                Test case
+                </p>
+                </i>
+            </a>
+           
+          </li>
+
+</ul>
+</nav>
+		
+	</aside>	
+            <!-- /sidebar menu -->
+
+            <!-- /menu footer buttons -->
+            <div class="sidebar-footer hidden-small">
+              <a data-toggle="tooltip" data-placement="top" title="Settings">
+                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Lock">
+                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+              </a>
+              
+            </div>
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+            <div class="nav_menu" >
+            
+           
+            <div id="navbar" class="collapse navbar-collapse" style="float:right">
+				<ul class="nav navbar-nav" >
+					<li sec:authorize="isAuthenticated()">
+					
+					 <a data-toggle="tooltip" data-placement="top" title="Logout" th:href="@{/logout}">
+                <span class="glyphicon glyphicon-off" aria-hidden="true"></span> 
+              </a>
+              </li>
+				</ul>
+			</div>
+                
+           
+            </div>
+          </div>
+        <!-- /top navigation -->
+
+		
+        <!-- page content -->
+        <div class="right_col" role="main">
+        
+          <div class="">
+            <div class="page-title">
+             
+            
+            
+            </div>
+
+          
+
+        
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+           
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+   <!-- jQuery -->
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- bs-custom-file-input -->
+<script src="../../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+  bsCustomFileInput.init();
+});
+</script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
