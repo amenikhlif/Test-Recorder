@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import io.cucumber.java.en.When;
+
 import net.javaguides.springboot.springsecurity.model.DependentTestCase;
 import net.javaguides.springboot.springsecurity.model.Scenario;
 
@@ -561,6 +561,8 @@ Sel=Sels;
 	
 		Traitment(tc);
 	remplirStep(tc);
+	Runner(tc);
+	XMLTestNG(tc);
 return "redirect:/scenario_lists?idTestCase=" +tc.getIdTestCase();
 }
 
@@ -822,10 +824,9 @@ String Debut ="package "+FolderName+";\r\n" +
 		"import org.openqa.selenium.chrome.ChromeDriver;\r\n" + 
 		"import org.openqa.selenium.support.ui.Select;\r\n"+
 		"\r\n" + 
-		"import io.cucumber.java.en.Given;\r\n" + 
-		"import io.cucumber.java.en.Then;\r\n" + 
-		"import io.cucumber.java.en.When;\r\n"
-		+ "public class "+StepFileName+" {\r\n" + 
+		"import cucumber.api.java.en.*;"
+		+"\r\n" + 
+		 "public class "+StepFileName+" {\r\n" + 
 		"	public WebDriver driver ;\r\n ";
 
 
@@ -1025,6 +1026,91 @@ public String choixBrowserStep(DependentTestCase tc1) {
 	return Brow;
 }
 
+
+
+
+public void Runner(DependentTestCase tc1) throws Exception {
+	//DependentTestCase tc1 = dependenttestCaseService.getDependentTestCaseById((long) 1034);
+
+	List<Scenario> sce=scenarioService.findTestCaseScenario(tc1);
+	String FolderName1=tc1.getTestCaseName().trim().replace(' ', '_')+tc1.getIdTestCase();
+	
+	String FolderName="Runner"+tc1.getTestCaseName().trim().replace(' ', '_')+tc1.getIdTestCase();
+	new File("./src/test/java/"+FolderName).mkdir();
+	//String StepFileName="Step_"+tc1.getTestCaseName().trim().replace(' ', '_')+tc1.getIdTestCase();
+	File fichier = new File("./src/test/java/"+FolderName+FolderName1+".java");
+	if (fichier.createNewFile())
+	  System.out.println("Le fichier a été créé");
+	else
+	  System.out.println("Erreur, Impossible de créer ce fichier");
+  
+
+	FileOutputStream fout=new FileOutputStream("./src/test/java/"+FolderName+"/"+FolderName1+".java",true);    
+	String Debut =" package " +FolderName+";\r\n" + 
+			"\r\n" + 
+"import cucumber.api.CucumberOptions;\r\n" + 
+"import cucumber.api.testng.AbstractTestNGCucumberTests;\r\n" + 
+			
+			"@CucumberOptions(\r\n" + 
+			"		\r\n" + 
+			"		features="+'"'+".//FeaturesTR/"+FolderName1+".feature"+'"'+",\r\n" + 
+			"		glue="+'"'+FolderName1+'"'+",\r\n" + 
+			"plugin= {\"pretty\",\"html:HTML-Reports\"},\r\n" + 
+			"	    monochrome=true" +
+			"		\r\n" + 
+			"		)\r\n" + 
+			"\r\n" + 
+			"\r\n" + 
+			"public class " +FolderName1+  " extends AbstractTestNGCucumberTests"+ " {\r\n" + 
+			"\r\n" + 
+			"}\r\n" + 
+			" " ;
+	
+	byte c[]=Debut.getBytes();//converting string into byte array    
+	fout.write(c);
+	fout.close();
+	//return "Trai";	
+}
+
+
+public void XMLTestNG(DependentTestCase tc1) throws Exception {
+	//DependentTestCase tc1 = dependenttestCaseService.getDependentTestCaseById((long) 1049);
+
+	List<Scenario> sce=scenarioService.findTestCaseScenario(tc1);
+	String FolderName1=tc1.getTestCaseName().trim().replace(' ', '_')+tc1.getIdTestCase();
+	
+	String FolderName="XMLTestNG"+tc1.getTestCaseName().trim().replace(' ', '_')+tc1.getIdTestCase();
+	//new File("./src/test/java/"+FolderName).mkdir();
+	//String StepFileName="Step_"+tc1.getTestCaseName().trim().replace(' ', '_')+tc1.getIdTestCase();
+	File fichier = new File("./"+FolderName+".xml");
+	if (fichier.createNewFile())
+	  System.out.println("Le fichier a été créé");
+	else
+	  System.out.println("Erreur, Impossible de créer ce fichier");
+  
+String NameFolderRunner="Runner"+tc1.getTestCaseName().trim().replace(' ', '_')+tc1.getIdTestCase();
+
+String NameFileRunner=tc1.getTestCaseName().trim().replace(' ', '_')+tc1.getIdTestCase();
+
+	FileOutputStream fout=new FileOutputStream(".//"+FolderName+".xml",true);    
+	String Debut ="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n" + 
+			"<!DOCTYPE suite SYSTEM \"https://testng.org/testng-1.0.dtd\">\r\n" + 
+			"<suite name=\"Suite\">\r\n" + 
+			"  <test thread-count=\"5\" name=\"Test\">\r\n" + 
+			"  <classes>\r\n" + 
+			"      <class name="+'"'+NameFolderRunner+"."+NameFileRunner+'"'+"/>\r\n" + 
+			"    </classes>\r\n" + 
+			"  </test> <!-- Test -->\r\n" + 
+			"</suite> <!-- Suite -->";
+			
+			
+			
+			
+	byte c[]=Debut.getBytes();//converting string into byte array    
+	fout.write(c);
+	fout.close();
+
+}
 
 
 	}	 

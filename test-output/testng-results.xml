@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="10964" started-at="2020-05-07T03:15:41Z" finished-at="2020-05-07T03:15:52Z">
+    <groups>
+      <group name="cucumber">
+        <method signature="AbstractTestNGCucumberTests.runScenario(cucumber.api.testng.PickleEventWrapper, cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:Runnertestmardi22281.testmardi22281@7adda9cc]" name="runScenario" class="cucumber.api.testng.AbstractTestNGCucumberTests"/>
+      </group> <!-- cucumber -->
+    </groups>
+    <test name="Test" duration-ms="10964" started-at="2020-05-07T03:15:41Z" finished-at="2020-05-07T03:15:52Z">
+      <class name="Runnertestmardi22281.testmardi22281">
+        <test-method status="PASS" signature="setUpClass()[pri:0, instance:Runnertestmardi22281.testmardi22281@7adda9cc]" name="setUpClass" is-config="true" duration-ms="171" started-at="2020-05-07T03:15:41Z" finished-at="2020-05-07T03:15:41Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method status="PASS" signature="runScenario(cucumber.api.testng.PickleEventWrapper, cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:Runnertestmardi22281.testmardi22281@7adda9cc]" name="runScenario" duration-ms="10604" started-at="2020-05-07T03:15:41Z" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2020-05-07T03:15:52Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["eee"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["testmardi22"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:Runnertestmardi22281.testmardi22281@7adda9cc]" name="tearDownClass" is-config="true" duration-ms="123" started-at="2020-05-07T03:15:52Z" finished-at="2020-05-07T03:15:52Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- Runnertestmardi22281.testmardi22281 -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>
